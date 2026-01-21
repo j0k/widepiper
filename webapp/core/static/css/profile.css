@@ -1,0 +1,325 @@
+* {
+    user-select: none;
+    -moz-user-select: none;
+    text-decoration: none;
+}
+.token-balance-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.user-nickname {
+    font-weight: bold;
+    text-align: center;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.user_wallet {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#userprofile {
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px 0 ;
+    max-width: 200px;
+}
+
+.user-profile::-webkit-scrollbar {
+    display: none;
+}
+
+.log_theme {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user_wallet::-webkit-scrollbar {
+    display: none;
+}
+
+    .token-idea {
+        width: 100%;
+        display: flex;
+        margin-top: 10px;
+        justify-content: space-between;
+        background-color: rgb(235, 235, 235);
+        padding: 10px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        border: 3px outset black;
+        font-size: 10px;
+    }
+
+    .token-matter {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(235, 235, 235);
+        padding: 10px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        border: 3px outset black;
+        font-size: 10px;
+    }
+
+    .token-wallet {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgb(235, 235, 235);
+        padding: 10px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        border: 3px outset black;
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+
+    .prise-idea {
+        float: right;
+        display: block;
+        font-size: 10px;
+    }
+
+    .prise-matter {
+        float: right;
+        display: flex;
+        font-size: 10px;
+    }
+
+    .amount-idea span{
+        display: block;
+        font-size: 8px;
+    }
+
+    .amount-matter span {
+        display: block;
+        font-size: 8px;
+    }
+
+    .amount-wallet span {
+        display: block;
+        font-size: 8px;
+    }
+
+
+    .token-matter {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .token-wallet {
+        display: flex;
+        margin-top: 10px;
+    }
+
+.usd {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    background-color: rgb(235, 235, 235);
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 3px outset black;
+    font-size: 10px;
+}
+
+
+.bnb {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    background-color: rgb(235, 235, 235);
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 3px outset black;
+    font-size: 10px; 
+}
+
+.amount-bnb span {
+    display: block;
+    font-size: 8px;
+}
+
+.bnb-price {
+    float: right;
+    display: flex;
+    font-size: 10px;
+}
+
+
+.user-nickname span{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-profile span {
+    font-size: 10px;
+}
+
+.usd-amount {
+    font-size: 10px;
+}
+
+.logout_profile button{
+    border: 0;
+    background-color: inherit;
+}
+
+.logout_profile button {
+    padding: 5px;
+}
+.logout_profile button:hover {
+    transform: scale(1.2);
+    color: #4D9FFF;
+}
+
+.deposit_block {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.deposit_block img{
+    margin: auto;
+}
+
+.deposit_block span{
+    margin-top: 3px;
+}
+
+.deposit_block {
+    transition: transform .5s easy;
+}
+
+.deposit_block:active{
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+}
+
+.private_key_block {
+    display: flex;
+    flex-direction: column;
+    a {
+        text-align: center;
+    }
+}
+
+.withdraw_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.withdraw_block img{
+    margin: auto;
+}
+
+.private_key_block {
+    transition: transform .5s easy;
+}
+
+.private_key_block:active{
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+}
+
+.withdraw_block {
+    transition: transform .5s easy;
+}
+
+.withdraw_block:active{
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+}
+
+
+.withdraw_block a {
+    color: #4D9FFF;
+    text-align: center;
+}
+
+
+#theme-btn {
+    border: none;
+    left: 0;
+    top: 0;
+    background-color: inherit;
+    padding: 3px;
+    border: none;   
+    img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+#theme-btn:hover {
+    transform: scale(1.2);
+}
+
+html.dark body{
+    background-color: var(--dark-color);
+    color: var(--text-color-dark);
+    .token-matter, .token-wallet, .token-idea, .usd{
+        background-color: var(--dark-svg-color);
+      }
+    #theme-btn {
+        background-color: var(--dark-color);
+        img {
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+        }
+    }
+    img {
+        filter: invert(85%) sepia(1%) saturate(1861%) hue-rotate(16deg) brightness(87%) contrast(93%);  
+    }
+    h6 {
+        color: var(--dark-svg-color);
+    }
+    span {
+        color: var(--text-color-dark);
+    }
+    
+    h1 {
+        color: var(--text-color-dark);
+    }
+
+    .logout_profile button{
+        background-color: var(--dark-color);
+        border: none;
+        color: var(--text-color-dark);
+    }
+    .bnb {
+        background-color: var(--dark-svg-color);
+    }
+  }   
+
+
+  #address {
+    font-size: 10px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }

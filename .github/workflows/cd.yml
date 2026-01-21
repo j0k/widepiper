@@ -1,0 +1,28 @@
+name: cd
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    environment: cd
+    steps:
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /home/vps/liquidity
+          git pull origin master
+          git status
+          chmod +x ./scripts/start-prod.sh
+          ./scripts/start-prod.sh

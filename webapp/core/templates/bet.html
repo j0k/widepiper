@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block title %}
+            <title>Bets</title>
+        {% endblock title %}
+        
+    </head>
+    <body>
+
+        {% block content %}
+            <div class="dashboard-header">
+                <a class="faq" href="{% url 'faq' %}"><img class="faq" src="{% static 'img/faq.svg' %}" alt="faq"></a>
+                <h1 class="header-title">Liquidity</h1>
+            </div>
+            
+            <div class="dashboard-tokens">
+                {% block form %}
+                    <form action="/bet/create/" method="POST">
+                        {% csrf_token %}
+                        <div class="selectors">{{ make_bet_form }}</div>
+                        <div class="header-balance">
+                            <!-- <ul class="price_list">
+                                <li id="matter_span"><span>Your USDT: {{ user_matter_balance }}$</span></li>
+                                <li id="usd_span"><span>BNB for <span>transaction</span>: {{ gas_price|floatformat:5 }}$</span></li>
+                    
+                            </ul>
+                            <ul class="price_list">
+                                <li id="matter_span" class="matter_span_1"><span id="synced-server-time"></span></li>
+                                <li id="usd_span"><span>Your BNB: {{ user_bnb_balance }}</span></li>
+                            </ul> -->
+
+                            <div class="item item1"><span>Your USDT {{ user_matter_balance }}$</span></div>
+                            <div class="item item2"><span>BNB for <span>transaction</span> {{ gas_price|floatformat:5 }}$</span></div>
+                            <div class="item item3"><span id="synced-server-time"></span></div>
+                            <div class="item item4"><span>Your BNB {{ user_bnb_balance }}</span></div>
+                            
+                        </div>
+                        <div class="bet-area">
+                            <button id="call-btn" name="call-btn" class="call-btn" type="submit">Create</button>
+                        </div>
+                    </form>
+                </div>
+            {% endblock form %}
+            <div class="bet-list">
+                {% block bet_list %}
+                {{ bet_list.non_field_errors }}
+                    <ul>
+                        {% for bet in bet_list %}
+                            <li>
+                                <form action="/bet/remove/" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" value="{{ bet.id }}" name="removed_bet_id">
+                                </input>
+
+                                <button class="sb-btn" type="submit">X</button>
+                            </form>
+                            <div class="info_bar" id="{{ bet.is_winning }}">
+                                <div>
+                                    <span>Bet size:</span>
+                                    <span id="bet_size">{{ bet.bet_size }}$</span>
+                                </div>
+                                <div>
+                                    <span>Your bet ratio:</span>
+                                    <span id="bet_percent">{{ bet.bet_ratio }}$</span>
+                                </div>
+                                <div>
+                                    <span>Start Matter price:</span>
+                                    <span id="bet_price">{{ bet.start_matter_price }}$</span>
+                                </div>
+                                <div>
+                                    <span>Start Idea price:</span>
+                                    <span id="bet_price">{{ bet.start_idea_price }}$</span>
+                                </div>
+                                <div>
+                                    <span> Your bet percent:</span>
+                                    <span id="bet_price">{{ bet.bet_percent }}%</span>
+                                </div>
+
+                                
+                            </div>
+                        </li>
+                        
+                    {% endfor %}
+                </ul>
+                
+            {% endblock bet_list %}
+            <script src="{% static 'scripts/banner.js' %}" defer></script>
+            {{ app_wallet|json_script:"wallet_data" }}
+        </div>
+        <script src="{% static 'scripts/clock.js' %}"></script>
+    {% endblock content %}
+</body>
+</html>

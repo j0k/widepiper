@@ -1,0 +1,40 @@
+FROM python:3.10-slim AS base
+
+ENV POETRY_HOME=/opt/poetry
+ENV PATH=${POETRY_HOME}/bin:${PATH}
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y \
+    curl build-essential \
+    && apt-get clean \ && rm -rf /var/lib/apt/lists/*
+RUN curl -sSL https://install.python-poetry.org | python3 - && poetry --version
+
+
+FROM base AS builder
+
+WORKDIR /app
+COPY poetry.lock pyproject.toml poetry.toml ./
+RUN poetry install --only main,webapp --no-interaction
+
+
+FROM base AS runner
+
+WORKDIR /app
+COPY --from=builder /app/.venv/ /app/.venv/
+
+COPY webapp /app/webapp
+COPY pyproject.toml /app/pyproject.toml
+COPY poetry.lock /app/poetry.lock
+
+EXPOSE 8000
+
+RUN chmod +x /app/webapp/entrypoint.sh
+
+
+FROM runner AS development
+
+WORKDIR /app/webapp
+
+ENTRYPOINT [ "/app/webapp/entrypoint.sh" ]

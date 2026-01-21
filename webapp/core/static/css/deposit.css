@@ -1,0 +1,71 @@
+.payment-method {
+    margin-top: 10px;
+    font-size: 28px;
+    height: 100%;
+
+}
+
+.payment-selection  {
+    position: relative;
+}
+
+.payment {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    font-size: 25px;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-bottom: solid 2px;
+    color: rgba(0, 0, 0);
+    margin-top: 5px;
+}
+
+.payment-select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    font-size: 25px;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    color: rgba(0, 0, 0);
+    border-bottom: solid 2px black;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-radius: 0;
+}
+
+.valute span {
+    border: none;
+}
+
+.deposit-btn {
+    font-size: 30px;
+    color: var(--text-color);
+    border-radius: 10px;
+    background-color: var(--second-color);
+    width: 90%;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.deposit-btn:active {
+    transform: scale(1.1);
+    color: white;
+}
+
+
+.deposit_btn_div {
+    display: flex;
+    justify-content: center;
+}
+
+html.dark .payment-select{
+    background-color: var(--dark-color);
+    color: var(--text-color-dark);
+}

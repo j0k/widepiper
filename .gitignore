@@ -1,0 +1,23 @@
+tmp/*
+*__pycache__*
+proxy/certbot/*
+telegram_bot/blockchain/chain_data/*
+
+*.idea
+*.env
+*.env.backup
+*.venv
+*.sqlite3
+*.db
+*.log
+
+# Sensitive files with wallet information
+WALLETS_INFO.txt
+TON_WALLET_INFO.txt
+test_wallets_backup.txt
+ADDRESSES_READY.txt
+
+next_block_sync.txt
+.DS_Store
+
+node_modules

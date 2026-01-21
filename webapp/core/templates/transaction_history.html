@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head%>
+        {% block title %}
+            <title>TransactionsHistory</title>
+        {% endblock title %}
+        
+    </head>
+    <body>
+        {% block content %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const blocks = document.querySelectorAll('.block-info-transactions');
+
+            blocks.forEach(block => {
+                block.addEventListener('click', function() {
+                    const isAnyActive = Array.from(blocks).some(b => b.classList.contains('pull'));
+
+                    if (!isAnyActive || block.classList.contains('pull')) {
+                        block.classList.toggle('pull');
+                                }
+                            });
+                        });
+                    });
+        </script>
+            <div class="transactions-area" id="transactions-area">
+                {% block transactions %}
+                    {% if transaction_list %}
+                        <ul class="list">
+                            {% for t in transaction_list %}
+                                <li class="block-info-transactions">
+                                    <span class="out">From: {{ t.from_wallet }}</span>
+                                    <span class="to">To: {{ t.to_wallet }}</span>
+                                    <span>Amount: {{ t.amount }}$</span>
+                                    <span>Created at: {{ t.created_at }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <h1 class="transaction_history_header">Have no transactions</h1>
+                    {% endif %}
+                {% endblock transactions %}
+            </div>
+        {% endblock content %}
+    </html>

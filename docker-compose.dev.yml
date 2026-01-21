@@ -1,0 +1,47 @@
+services:
+  webapp:
+    environment:
+      ENVIRONMENT: "development"
+      DEBUG: "1"
+    build:
+      context: ./
+      dockerfile: ./webapp/Dockerfile.dev
+    volumes:
+      - staticfiles:/app/webapp/static/:rw
+      - ./db:/app/webapp/db/:rw
+      - ./next_block_sync.txt:/app/webapp/next_block_sync.txt:ro
+    ports:
+      - 8090:8000
+    env_file:
+      - ./.env
+
+  bet_manager:
+    environment:
+      ENVIRONMENT: "development"
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./bet_manager/Dockerfile.dev
+    volumes:
+      - ./db:/app/db/:rw
+      - ./bet_manager.log:/app/bet_manager.log:rw
+      - ./next_block_sync.txt:/app/next_block_sync.txt:rw
+
+  deposit_monitor:
+    environment:
+      ENVIRONMENT: "development"
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./webapp/Dockerfile.dev
+    command: python manage.py monitor_deposits --interval 30
+    volumes:
+      - ./db:/app/webapp/db/:rw
+    restart: always
+    depends_on:
+      - webapp
+
+volumes:
+  staticfiles:

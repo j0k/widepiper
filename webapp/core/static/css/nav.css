@@ -1,0 +1,276 @@
+
+.dashboard-nav {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  }
+
+.nav {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row; 
+
+}
+
+.nav-icons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center; }
+
+ul.nav-icons-list {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 10px; }
+
+
+#bet {
+  width: 40px;
+  height: 39px; }
+
+#wallet {
+  width: 40px;
+  height: 39px; }
+
+#wallet-connect {
+  width: 40px;
+  height: 39px; }
+
+#wallet-disconnect {
+  width: 40px;
+  height: 39px; }
+
+#list {
+  width: 39px;
+  height: 38px; }
+
+#user {
+  width: 39px;
+  height: 38px; }
+
+#deposit {
+  width: 39px;
+  height: 38px; }
+
+#withdraw {
+  width: 39px;
+  height: 38px; }
+
+.text_block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 20px; }
+
+.nav span {
+  font-size: 10px; }
+
+.nav-profile {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 5px; }
+
+.profile-icon.active {
+  h6 {
+  color: #4D9FFF; 
+  font-size: 12px;}
+  img {
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+  }
+}
+
+.nav-icons-list h6 {
+  cursor: pointer;
+}
+
+.history-icon{
+  img, h6 {
+    transition: transform .5s ease;
+  }
+
+}
+
+.history-icon:not(.active):active {
+  img{
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+}
+
+/* .history-icon:not(.active):hover {
+  img{
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+} */
+
+.bet-icon{
+  img, h6 {
+    transition: transform .5s ease;
+  }
+
+}
+
+/* .bet-icon:not(.active):hover {
+  img {
+    transform: scale(1.1);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.1);
+    z-index: 1;
+  }
+} */
+
+.bet-icon:not(.active):active{
+  img {
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+}
+
+.profile-icon{
+  img, h6 {
+    transition: transform .5s ease;
+  }
+
+}
+
+/* .profile-icon:not(.active):hover {
+  img {
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+} */
+
+.profile-icon:not(.active):active{
+  img {
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+
+
+}
+
+.history-icon.active {
+  h6 {
+  color: #4D9FFF; 
+  font-size: 12px;
+  }
+  img {
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+  }
+}
+
+
+.bet-icon.active {
+  h6 {
+  color: #4D9FFF; 
+  font-size: 12px;}
+  img {
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+  }
+}
+
+.wallet-icon{
+  img, h6 {
+    transition: transform .5s ease;
+  }
+}
+
+.wallet-icon:not(.active):active{
+  img {
+    transform: scale(1.3);
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+  }
+  
+  h6 {
+    color: #4D9FFF;
+    transform: scale(1.2);
+    z-index: 1;
+  }
+}
+
+.wallet-icon.active {
+  h6 {
+  color: #4D9FFF; 
+  font-size: 12px;}
+  img {
+    filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+    transform: scale(1.2);
+  }
+}
+
+.nav a {
+  text-decoration: none;
+  color: black; }
+
+/* Connected wallet hover effect */
+.connected-wallet {
+  position: relative;
+}
+
+.connected-wallet:hover img {
+  transform: scale(1.3);
+  filter: invert(77%) sepia(53%) saturate(6579%) hue-rotate(191deg) brightness(101%) contrast(101%);
+}
+
+.connected-wallet:hover h6 {
+  color: #4D9FFF;
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+/* Wallet icon transitions */
+.wallet-icon img, .wallet-icon h6 {
+  transition: all 0.3s ease;
+}
+
+/*# sourceMappingURL=nav.css.map */

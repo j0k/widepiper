@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to Liquidity</title>
+        <script>
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                console.log(theme)
+                document.querySelector("html").setAttribute("class", "dark");
+                const themeBtn = document.getElementById('theme-btn');
+                }
+            else {
+                document.querySelector("html").setAttribute("class", "light");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="welcome_banner">
+                <div class="banner">
+                    <h1>Welcome to Liquidity!</h1>
+                    <h2>Make your dreams come true</h2>
+                </div>
+                <div class="login-reg-bar">
+                    <a href="{% url 'login' %}"><span>Log In</span></a>
+                    <a href="{% url 'register' %}"><span>Sign Up</span></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

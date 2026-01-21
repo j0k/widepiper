@@ -1,0 +1,59 @@
+.tokens-selection {
+    height: 100%;
+    form {
+        height: 100%;
+    }
+}
+
+
+.sell-btn {
+    font-size: 30px;
+    color: var(--text-color);
+    display: flex;
+    border-radius: 10px;
+    background-color: var(--second-color);
+    justify-content: center;
+    width: 90%;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.sell-btn:active {
+    transform: scale(1.1);
+    color: white;
+}
+
+.sell_btn_div {
+    display: flex;
+    justify-content: center;
+}
+
+.wallet {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 25px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+html.dark .payment-method{
+    background-color: var(--dark-color);
+    color: var(--text-color-dark);
+    a {
+        color: var(--text-color-dark);
+    }
+
+    button {
+        color: var(--text-color-dark);
+    }
+
+    .wallet {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid var(--text-color-dark);
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    
+}

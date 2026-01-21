@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/private_key.css' %}">
+    <title>Private key</title>
+    <script>
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.querySelector("html").setAttribute("class", "dark");
+            const themeBtn = document.getElementById('theme-btn');
+            }
+        else {
+            document.querySelector("html").setAttribute("class", "light");
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header_container">
+            <h1 class="arrow"><a href="{% url 'profile' %}">&lt;</a></h1>
+            <h1>Private Key</h1>
+        </header>
+        <div class="dashboard">
+            <div class="private_key_banner">
+                <p id="key">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</p>   
+            </div>
+            <div class="warning">
+                <p><strong>Warning:</strong> never disclose this key. Anyone with your private key can steal any assets held in your account.</p>
+            </div>
+        </div>
+        <script src="{% static 'scripts/key.js' %}" defer></script>
+        {{ user_profile.crypto_wallet_private_key|json_script:"key_data" }}
+    </div>
+    
+
+</body>
+</html>

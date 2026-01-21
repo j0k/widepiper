@@ -1,0 +1,45 @@
+services:
+  webapp:
+    environment:
+      ENVIRONMENT: "production"
+      DEBUG: "0"
+    build:
+      context: ./
+      dockerfile: ./webapp/Dockerfile.prod
+    volumes:
+      - ./db:/app/webapp/db/:rw
+      - /var/www/liquidity/static:/app/webapp/static/:rw
+      - ./next_block_sync.txt:/app/webapp/next_block_sync.txt:ro
+    ports:
+      - 8090:8000
+    restart: always
+    env_file:
+      - ./.env
+
+
+  bet_manager:
+    environment:
+      ENVIRONMENT: "production"
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./bet_manager/Dockerfile.prod
+    volumes:
+      - ./db/:/app/db/:rw
+      - ./bet_manager.log:/app/bet_manager.log:rw
+      - ./next_block_sync.txt:/app/next_block_sync.txt:rw
+    restart: always
+    depends_on:
+      - webapp
+
+  telegram_bot:
+    environment:
+      WEBAPP_URL: "https://your-domain.com/"
+      ENVIRONMENT: "production"
+    env_file:
+      - ./.env
+    build:
+      context: ./
+      dockerfile: ./telegram_bot/Dockerfile.prod
+    restart: always

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/sign-up.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <script>
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                console.log(theme)
+                document.querySelector("html").setAttribute("class", "dark");
+                const themeBtn = document.getElementById('theme-btn');
+                }
+            else {
+                document.querySelector("html").setAttribute("class", "light");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="register_banner">
+            <header class="register_header">
+                <h1>Sign Up</h1>
+            </header>
+            <div class="content">
+                <div class="registration_area">
+                    {% block form %}
+                        <form class="reg-form" method="post" novalidate>
+                            {% csrf_token %}
+                            {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}{{ error }}{% endfor %}
+                            {% endif %}
+                            {% for field in form %}
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors.as_ul }}
+                            {% endfor %}
+                            <button type="submit">Sign Up</button>
+                        </form>
+                    {% endblock form %}
+                </div>
+                <div class="login-linking">
+                    <h6>Already have an account?</h6>
+                    <a href="{% url 'login' %}"><span>Log In</span></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

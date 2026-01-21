@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Games</title>
+{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/games.css' %}">
+
+<div class="games-container">
+    <div class="games-header">
+        <h1 class="header-title">Flappy Bird</h1>
+        <div class="balance-display">
+            <span>Balance: </span>
+            <span id="game-balance">{{ usdt_balance|floatformat:2 }}</span>
+            <span> USDT</span>
+        </div>
+    </div>
+    
+    <div class="game-wrapper">
+        <canvas id="flappy-canvas"></canvas>
+        
+        <div id="game-overlay" class="game-overlay">
+            <div class="overlay-content">
+                <h2 id="overlay-title">Flappy Bird</h2>
+                <p id="overlay-score"></p>
+                <p id="overlay-earned"></p>
+                <button id="start-btn" class="game-btn">Start Game</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-info">
+        <div class="info-item">
+            <span>Score: </span>
+            <span id="current-score">0</span>
+        </div>
+        <div class="info-item">
+            <span>Earned: </span>
+            <span id="earned-amount">0.00</span>
+            <span> USDT</span>
+        </div>
+    </div>
+    
+    <p class="game-hint">Tap or press Space to fly!</p>
+</div>
+
+<script src="{% static 'scripts/flappy-bird.js' %}"></script>
+{% endblock content %}

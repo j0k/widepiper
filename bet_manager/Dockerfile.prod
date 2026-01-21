@@ -1,0 +1,37 @@
+FROM python:3.10-slim AS base
+
+ENV POETRY_HOME=/opt/poetry
+ENV PATH=${POETRY_HOME}/bin:${PATH}
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+RUN apt-get update \
+	&& apt-get install --no-install-recommends -y \
+	curl build-essential \
+	&& apt-get clean \ && rm -rf /var/lib/apt/lists/*
+RUN curl -sSL https://install.python-poetry.org | python3 - && poetry --version
+
+
+FROM base AS builder
+
+WORKDIR /app
+COPY poetry.lock pyproject.toml poetry.toml ./
+RUN poetry install --only main,bet_manager --no-interaction
+
+
+FROM base AS runner
+
+WORKDIR /app
+COPY --from=builder /app/.venv/ /app/.venv/
+
+COPY bet_manager /app/bet_manager
+COPY webapp /app/webapp
+COPY pyproject.toml /app/pyproject.toml
+COPY poetry.lock /app/poetry.lock
+
+RUN chmod +x ./bet_manager/entrypoint.sh
+
+
+FROM runner AS production
+
+ENTRYPOINT [ "./bet_manager/entrypoint.sh" ]

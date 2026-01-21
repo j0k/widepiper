@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block title %}
+            <title>Profile</title>
+        {% endblock title %}
+    </head>
+    <body>
+        <a href="{% block faq %}{% url 'faq_profile' %}{% endblock faq %}">FAQ</a>
+        {% block content %}
+            <div class="log_theme">
+                <div>
+                    <button id="theme-btn">
+                        <img id="theme_btn" src="{% static 'img/sun.svg' %}" alt="">
+                    </button>
+                </div>
+                <div class="user-nickname">
+                    <div class="user_wallet">
+                        <div class="user-profile">
+                            <span id="userprofile">{{ user.username }}</span>
+                        </div>
+                    </div>
+                    <h6 id="address"
+                        data-full-address="{{ user_profile.crypto_wallet_address }}">
+                        {{ user_profile.crypto_wallet_address |slice:":3" }}...{{ user_profile.crypto_wallet_address |slice:"-3:" }}
+                    </h6>
+                </div>
+                <div class="logout_profile">
+                    <a href="{% url 'logout' %}">
+                        <button>Logout</button>
+                    </a>
+                </div>
+            </div>
+            <div class="token-balance-area">
+                <div class="usd">
+                    <div class="usd-name">
+                        <h1>Balance</h1>
+                    </div>
+                    <div class="usd-amount">
+                        <h1>{{ total_balance_in_usdt }}$</h1>
+                    </div>
+                </div>
+                <div class="bnb">
+                    <div class="bnb-name">
+                        <h1>BNB</h1>
+                        <div class="amount-bnb">
+                            <span>{{ bnb_balance }}</span>
+                        </div>
+                    </div>
+                    <div class="bnb-price">
+                        <h1>{{ bnb_balance }}$</h1>
+                    </div>
+                </div>
+                <div class="token-idea">
+                    <div class="toke-idea-name">
+                        <h1>Idea</h1>
+                        <div class="amount-idea">
+                            <span>{{ idea_balance}}</span>
+                        </div>
+                    </div>
+                    <div class="prise-idea">
+                        <h1>{{ idea_balance_in_usdt }}$</h1>
+                    </div>
+                </div>
+                <div class="token-matter">
+                    <div class="token-matter-name">
+                        <h1>Matter</h1>
+                        <div class="amount-matter">
+                            <span>{{ matter_balance }}</span>
+                        </div>
+                    </div>
+                    <div class="prise-matter">
+                        <h1>{{ matter_balance_in_usdt }}$</h1>
+                    </div>
+                </div>
+                <div class="token-wallet">
+                    <div class="token-wallet-name">
+                        <h1>Your wallet</h1>
+                        <div class="amount-wallet">
+                            <span id="wallet-balance">{{ wallet_balance }}</span>
+                        </div>
+                    </div>
+                    <div class="prise-wallet">
+                        <h1 id="wallet-balance-usdt">{{ wallet_balance_in_usdt }}$</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-profile">
+                <li>
+                    <div class="withdraw_block">
+                        <a href="{% url 'sell' %}">
+                            <img id="withdraw" src="{% static 'img/withdraw.svg' %}" alt="">
+                            <h6>Withdraw</h6>
+                        </a>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="private_key_block">
+                        <a href="{% url 'private_key' %}">
+                            <img id="deposit" src="{% static 'img/deposit.svg' %}" alt="private_key_img">
+                            <h6>Key</h6>
+                        </a>
+
+                    </div>
+                </li>
+                
+            </div>
+            <script>
+                const profileTheme = localStorage.getItem('theme');
+                if (profileTheme === 'dark') {
+                    const themeBtn = document.getElementById('theme_btn');
+                    themeBtn.src = "{% static 'img/moon.svg' %}";
+                }
+            </script>
+            <script src="{% static 'scripts/profile.js' %}"></script>
+            <script src="{% static 'scripts/theme.js' %}"></script>
+        {% endblock content %}
+    </body>
+</html>

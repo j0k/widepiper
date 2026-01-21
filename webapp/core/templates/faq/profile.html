@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/FAQ.css' %}">
+    <title>FAQ</title>
+    <script>
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+            document.querySelector("html").setAttribute("class", "dark");
+            }
+        else {
+            document.querySelector("html").setAttribute("class", "light");
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        {% block content %}
+            <header class="header_container">
+                <h1 class="arrow"><a href="{% url 'bet' %}">&lt;</a></h1>
+                <h1>FAQ</h1>
+            </header>
+            <p>
+                Это приложение позволяет вам сделать на ставку на отношение токена DMT к USDT. Вы будете ставить USDT, поэтому вам необходимо иметь достаточное количество этого токена на кошельке, а так же немного BNB, чтобы покрывать затраты на газ в сети BSC. Сверху вы можете видеть адрес кошелька, а во вкладке Key - приватный ключ.
+                В разделе ставок есть два поля, первое - USDT Amount - количество токенов USDT, которые вы ставите, второе - DMT/USDT ratio - соотношение цен двух токенов, которые вы ожидаете увидеть в конце текущего блока. Чтобы сделать ставку заполните эти два поля и ожидайте окончания очередного блока, в конце блока транзакции пометятся разными цветами: красным - если вы проиграли, зеленым - если выиграли.</p>
+        {% endblock content %}
+    </div>
+    
+</body>
+</html>

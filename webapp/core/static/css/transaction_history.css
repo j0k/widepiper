@@ -1,0 +1,58 @@
+.transactions-area {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-top: 5px;
+    padding: 5px;
+    height: 95%;
+    width: 95%;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.to {
+    color: rgba(0, 128, 0, 0.718)!important;
+}
+
+.out{
+    color: rgba(255, 0, 0, 0.717)!important;
+}
+
+.transactions-area {
+    li {
+        width: 99%;
+        background-color: #e4e4e4;
+        margin-top: 5px;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: left;
+        word-break: break-all;
+        border: 3px ridge #000000;
+    }}
+
+
+body::-webkit-scrollbar {
+    display: none; 
+}
+
+html.dark .transactions-area {
+    li {
+        background-color: var(--dark-svg-color);
+    }
+}
+
+.list {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+}
+
+.list .block-info-transactions{
+    transition: .5s;
+}
+
+.block-info-transactions.pull  {
+    transform: translateX(10px);
+}

@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/wallet.css' %}">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+              rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.querySelector("html").setAttribute("class", "dark");
+                }
+            else {
+                document.querySelector("html").setAttribute("class", "light");
+            }
+
+        </script>
+         <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+         <script src="https://unpkg.com/@walletconnect/ethereum-provider@2.10.0/dist/index.umd.js"></script>
+        
+        <!-- Moralis API -->
+        <script src="{% static 'scripts/moralis-api.js' %}"></script>
+        <!-- Ethers helper API -->
+        <script src="{% static 'scripts/ethers-api.js' %}"></script>
+        <script>
+            window.MATTER_TOKEN_ADDRESS = '{{ MATTER_TOKEN_ADDRESS|default:"" }}';
+            window.IDEA_TOKEN_ADDRESS = '{{ IDEA_TOKEN_ADDRESS|default:"" }}';
+            window.WALLETCONNECT_PROJECT_ID = '{{ WALLETCONNECT_PROJECT_ID|default:"" }}';
+
+            // Init Moralis API with key from server
+            const MORALIS_API_KEY = '{{ MORALIS_API_KEY|default:"" }}';
+            if (MORALIS_API_KEY) {
+                window.initMoralisAPI(MORALIS_API_KEY);
+            } else {
+                console.warn('Moralis API key not found');
+            }
+        </script>
+         {% block title %}
+            <title></title>
+        {% endblock title %}
+    </head>
+    <body>
+        <div class="dashboard">
+            <div class="dashboard-body">
+                {% block content %}
+                {% endblock content %}
+                <div class="dashboard-nav">
+                    {% block sidebar %}
+                        <div class="nav">
+                            <!-- <div class="nav-logo">
+                                <div class="logo">
+                                    <a href="{% url 'bet' %}">
+                                        <img src="{% static 'img/logo.png' %}" alt="Logo" id="logo">
+                                    </a>
+                                </div>
+                            </div> -->
+                            <div class="nav-icons">
+                                <ul class="nav-icons-list">
+                                    <li>
+                                        <a href="{% url 'transaction_history' %}" class="history-icon" id="history-icon">
+                                            <img id="list" src="{% static 'img/history.svg' %}" alt="">
+                                            <h6>History</h6>
+                                        </a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a class="profile-icon" href="{% url 'profile' %}" id="profile-icon">
+                                            <img id="user" src="{% static 'img/profile.svg' %}" alt="">
+                                            <h6>Profile</h6>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="bet-icon" href="{% url 'bet' %}" id="bet-icon">
+                                            <img id="bet" src="{% static 'img/bet.svg' %}" alt="">
+                                            <h6>Bet</h6>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="games-icon" href="{% url 'games' %}" id="games-icon">
+                                            <img id="games" src="{% static 'img/games.svg' %}" alt="">
+                                            <h6>Games</h6>
+                                        </a>
+                                    </li>
+                                    <li id="connect-wallet__li">
+                                        <a class="wallet-icon" href="#" id="connect-wallet-btn">
+                                            <img id="wallet" src="{% static 'img/qrcode.svg' %}" alt="">
+                                            <h6>QR Code</h6>
+                                        </a>
+                                    </li>
+                                    <li id="disconnect-wallet__li" style="display: none;">
+                                        <a id="disconnect-wallet" class="disconnect-wallet wallet-icon">
+                                            <img id="wallet-disconnect" src="{% static 'img/disconnect.svg' %}" alt="">
+                                            <h6>Disconnect</h6>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endblock sidebar %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'scripts/nav.js' %}"></script>
+    <script src="{% static 'scripts/wallet-balance.js' %}"></script>
+    <script src="{% static 'scripts/walletconnect.js' %}"></script>
+</html>
