@@ -35,7 +35,7 @@ services:
 
   telegram_bot:
     environment:
-      WEBAPP_URL: "https://your-domain.com/"
+      WEBAPP_URL: "https://tg.ma8ka.com/"
       ENVIRONMENT: "production"
     env_file:
       - ./.env

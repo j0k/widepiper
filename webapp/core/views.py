@@ -142,9 +142,9 @@ def bets(request: HttpRequest) -> HttpResponse:
         bnb_balance = float(
             bnb_info["balance_formatted"] if bnb_info is not None else 0
         )
-        get_bnb_info(APP_WALLET)
+        app_wallet_info = get_bnb_info(APP_WALLET) if APP_WALLET else None
         context = {
-            "app_wallet": get_bnb_info(APP_WALLET)["balance_formatted"],
+            "app_wallet": app_wallet_info["balance_formatted"] if app_wallet_info else "0",
             "gas_price": gas_price,
             "make_bet_form": make_bet_form,
             "bet_list": bet_list1,

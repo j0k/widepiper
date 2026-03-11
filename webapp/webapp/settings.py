@@ -8,29 +8,37 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "your-domain.com", "0.0.0.0"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "tg.ma8ka.com", "0.0.0.0"]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "http://your-domain.com:8090",
-    "https://your-domain.com:8090",
-    "https://your-domain.com",
+    "http://tg.ma8ka.com:8090",
+    "https://tg.ma8ka.com:8090",
+    "http://tg.ma8ka.com",
+    "https://tg.ma8ka.com",
 ]
 
-# CSRF settings
+# CSRF and session cookies: Secure + SameSite for HTTPS and Telegram Web App (iframe)
+_env = os.getenv("ENVIRONMENT", "").lower()
+_production = _env == "production"
 CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = _production  # True on HTTPS so browser sends the cookie
 CSRF_USE_SESSIONS = False
+# SameSite=None so CSRF cookie is sent when app is embedded in Telegram iframe (requires Secure)
+if _production:
+    CSRF_COOKIE_SAMESITE = "None"
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = "None"
 
 CORS_ORIGIN_WHITELIST = [
-    "http://your-domain.com:8090",
-    "https://your-domain.com:8090",
+    "http://tg.ma8ka.com:8090",
+    "https://tg.ma8ka.com:8090",
     "http://localhost:8090",
     "https://localhost:8090",
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "https://your-domain.com",
+    "https://tg.ma8ka.com",
 ]
 
 INSTALLED_APPS = [

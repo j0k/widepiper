@@ -12,6 +12,11 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.AddField(
+            model_name='userprofile',
+            name='ton_wallet_address',
+            field=models.CharField(blank=True, max_length=74, null=True),
+        ),
         migrations.AlterField(
             model_name='userprofile',
             name='crypto_wallet_address',

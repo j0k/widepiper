@@ -5,11 +5,11 @@ function fetchServerTimeAndNextBlockTime() {
   const success = res => res.ok ? res.json() : Promise.resolve({});
   const clientTimestamp = Date.now();
   
-  const GetTime = fetch(`https://liquidity.chilipizdrick.xyz/api/v1/get_time?ct=${clientTimestamp}`)
+  const GetTime = fetch(`/api/v1/get_time?ct=${clientTimestamp}`)
       .then(success)
       .catch(() => { return { error: 'Server error' }; });
 
-  const BlockTime = fetch(`https://liquidity.chilipizdrick.xyz/api/v1/get_next_bet_sync_time`)
+  const BlockTime = fetch(`/api/v1/get_next_bet_sync_time`)
       .then(success)
       .catch(() => { return { error: 'Server error' }; });
 

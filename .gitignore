@@ -20,4 +20,8 @@ ADDRESSES_READY.txt
 next_block_sync.txt
 .DS_Store
 
+# No-Docker run
+.pids/
+logs/
+
 node_modules
